@@ -1,0 +1,70 @@
+﻿<mah:MetroWindow x:Class="XLSXInfo.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XLSXInfo.View"
+        xmlns:vm="clr-namespace:XLSXInfo.ViewModel"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="XLSXinfo"
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="WidthAndHeight"
+        GlowBrush="Black"
+        ResizeMode="NoResize"
+        Height="200"
+        Width="1000">
+	
+	<mah:MetroWindow.DataContext>
+		<vm:VMMainWindow />
+	</mah:MetroWindow.DataContext>
+
+	<Grid Margin="20">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="25" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="35" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="35" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="10" />
+			<ColumnDefinition Width="80" />
+		</Grid.ColumnDefinitions>
+		
+		<TextBox IsEnabled="False" Text="{Binding FilePath, Mode=OneWay}" />
+        <Button Content="Select file" Grid.Column="2" Command="{Binding PressSelectFile}" IsEnabled="{Binding IsEnabledContent, Mode=OneWay}" />
+		<DataGrid Grid.Row="2" Grid.ColumnSpan="3" AutoGenerateColumns="False" ItemsSource="{Binding WorkBook.Worksheets, Mode=OneWay}" IsReadOnly="True" SelectedItem="{Binding SelectedSheet, Mode=TwoWay}" >
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="#" Binding="{Binding Index}" Width="Auto" />
+				<DataGridTextColumn Header="Sheet name" Binding="{Binding Name}" Width="913" />
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<DataGrid x:Name="statisticSheet" Grid.Row="4" Grid.ColumnSpan="3" ItemsSource="{Binding SelectedSheetList, Mode=OneWay}" AutoGenerateColumns="False" IsReadOnly="True">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Start Row" Binding="{Binding Statistics.StartRowIndex, Mode=OneWay}" Width="Auto" />
+				<DataGridTextColumn Header="End Row" Binding="{Binding Statistics.EndRowIndex , Mode=OneWay}" Width="Auto" />
+				<DataGridTextColumn Header="Start Column" Binding="{Binding Statistics.StartColumnIndex , Mode=OneWay}" Width="Auto" />
+				<DataGridTextColumn Header="End Column" Binding="{Binding Statistics.EndColumnIndex , Mode=OneWay}" Width="Auto" />
+				<DataGridTextColumn Header="Number Of Columns" Binding="{Binding Statistics.NumberOfColumns , Mode=OneWay}" Width="Auto" />
+				<DataGridTextColumn Header="Number Of Rows" Binding="{Binding Statistics.NumberOfRows , Mode=OneWay}" Width="Auto" />
+				<DataGridTextColumn Header="Number Of Cells" Binding="{Binding Statistics.NumberOfCells , Mode=OneWay}" Width="Auto" />
+				<DataGridTextColumn Header="Number Of EmptyCells" Binding="{Binding Statistics.NumberOfEmptyCells , Mode=OneWay}" Width="Auto" />
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Right">
+			<TextBlock Text="File size:" Margin="0,0,5,0"/>
+			<TextBlock Text="{Binding FileSize, Mode=OneWay}" Margin="0,0,5,0" />
+			<TextBlock Text="{Binding Measurement, Mode=OneWay}" />
+		</StackPanel>
+
+        <mah:ProgressRing Grid.ColumnSpan="3" Grid.RowSpan="7" IsActive="{Binding IsShowProgressRing, Mode=OneWay}" />
+    </Grid>
+
+</mah:MetroWindow>

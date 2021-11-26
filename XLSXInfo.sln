@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLSXInfo", "XSLXInfo\XLSXInfo.csproj", "{53307DA0-5B09-44FB-8DB5-6B457AC0343F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53307DA0-5B09-44FB-8DB5-6B457AC0343F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53307DA0-5B09-44FB-8DB5-6B457AC0343F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53307DA0-5B09-44FB-8DB5-6B457AC0343F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53307DA0-5B09-44FB-8DB5-6B457AC0343F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD6ED71F-EE39-44D5-B0FD-A3EBE3371F07}
+	EndGlobalSection
+EndGlobal
